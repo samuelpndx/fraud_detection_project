@@ -1,0 +1,5 @@
+# .vercelignore
+data/
+__pycache__/
+*.csv
+*.json
