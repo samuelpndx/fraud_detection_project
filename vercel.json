@@ -1,27 +1,16 @@
 {
     "version": 2,
-    "builds": [
-      {
-        "src": "app.py",
-        "use": "@vercel/python"
+    "functions": {
+      "app.py": {
+        "runtime": "@vercel/python",
+        "includeFiles": "templates/** models/** requirements.txt"
       }
-    ],
+    },
     "routes": [
       {
         "src": "/(.*)",
         "dest": "app.py"
       }
-    ],
-    "functions": {
-      "app.py": {
-        "includeFiles": "templates/**"
-      },
-      "app-models.py": {
-        "includeFiles": "models/**"
-      },
-      "app-req.py": {
-        "includeFiles": "requirements.txt"
-      }
-    }
+    ]
   }
   
