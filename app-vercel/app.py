@@ -35,12 +35,12 @@ def load_model_and_data():
     
     # Carregar dados de teste
     try:
-
         fraud_data_url = 'https://raw.githubusercontent.com/samuelpndx/fraud_detection_project/main/data/fraud_data.csv'
         legit_data_url = 'https://raw.githubusercontent.com/samuelpndx/fraud_detection_project/main/data/legit_data.csv'
         
         positive_data = pd.read_csv(fraud_data_url)
         negative_data = pd.read_csv(legit_data_url)
+
         # positive_data = pd.read_csv('data/fraud_data.csv')
         # negative_data = pd.read_csv('data/legit_data.csv')
         print(f"Dados carregados com sucesso. Positivos: {len(positive_data)}, Negativos: {len(negative_data)}")
