@@ -11,6 +11,16 @@
       "src": "/(.*)",
       "dest": "app.py"
     }
-  ]
-  
+  ],
+  "functions": {
+    "app.py": {
+      "includeFiles": "templates/**"
+    },
+    "app-models.py": {
+      "includeFiles": "models/**"
+    },
+    "app-req.py": {
+      "includeFiles": "requirements.txt"
+    }
+  }
 }
