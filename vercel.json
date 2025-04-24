@@ -14,7 +14,11 @@
     ],
     "functions": {
       "app.py": {
-        "includeFiles": "templates/**,models/**,requirements.txt"
+        "includeFiles": [
+          "templates/**",
+          "models/**",
+          "requirements.txt"
+        ]
       }
     }
   }
