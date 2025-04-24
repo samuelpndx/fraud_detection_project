@@ -7,7 +7,7 @@ import json
 import os
 from datetime import datetime
 import random
-from sklearn.metrics import recall_score, precision_score, f1_score, average_precision_score
+from sklearn.metrics import recall_score, precision_score, f1_score
 
 app = Flask(__name__)
 
@@ -23,7 +23,6 @@ metrics = {
     'recall': 0,
     'precision': 0,
     'f1': 0,
-    # 'auc_pr': 0
 }
 
 # Carregar o modelo e os dados
@@ -90,8 +89,6 @@ def make_prediction():
     dmatrix = xgb.DMatrix(features)
     
     # Fazer previsão
-    # prediction_prob = float(model.predict(dmatrix)[0])
-    # prediction = 1 if prediction_prob > 0.5 else 0
     prediction = int(model.predict(dmatrix)[0] > 0.5)
     
     # Atualizar contadores
@@ -107,14 +104,12 @@ def make_prediction():
         'timestamp': timestamp,
         'features': features.iloc[0].to_dict(),
         'prediction': prediction,
-        # 'probability': prediction_prob,
         'expected': expected
     }
     
     current_data.append(new_data)
     predictions.append({
         'timestamp': timestamp,
-        # 'probability': prediction_prob,
         'prediction': prediction,
         'expected': expected
     })
@@ -123,12 +118,10 @@ def make_prediction():
     if len(predictions) >= 10:
         y_true = [p['expected'] for p in predictions[-100:]]
         y_pred = [p['prediction'] for p in predictions[-100:]]
-        # y_prob = [p['probability'] for p in predictions[-100:]]
         
         metrics['recall'] = round(recall_score(y_true, y_pred, zero_division=0), 3)
         metrics['precision'] = round(precision_score(y_true, y_pred, zero_division=0), 3)
         metrics['f1'] = round(f1_score(y_true, y_pred, zero_division=0), 3)
-        # metrics['auc_pr'] = round(average_precision_score(y_true, y_prob), 3)
     
     return jsonify({'status': 'success', 'data': new_data})
 
@@ -144,7 +137,6 @@ def reset_system():
         'recall': 0,
         'precision': 0,
         'f1': 0,
-        # 'auc_pr': 0
     }
     return jsonify({'status': 'success', 'message': 'Sistema reiniciado com sucesso'})
 
