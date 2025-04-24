@@ -5,3 +5,4 @@ data/negative_data.csv
 data/positive_data.csv
 data/X_test.csv
 data/y_test.csv
+.venv
