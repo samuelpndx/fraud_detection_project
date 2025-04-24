@@ -13,11 +13,12 @@
     }
   ],
   "functions": {
-    "includeFiles": [
-      "app.py",
-      "templates/**",
-      "models/**",
-      "requirements.txt"
-    ]
+    "app.py": {
+      "includeFiles": [
+        "templates/**",
+        "models/**",
+        "requirements.txt"
+      ]
+    }
   }
 }
