@@ -1,8 +1,8 @@
 __pycache__/
 llm/
+venv
 data/creditcard.csv
-data/negative_data.csv
-data/positive_data.csv
+data/negative.csv
+data/positive.csv
 data/X_test.csv
 data/y_test.csv
-.venv
